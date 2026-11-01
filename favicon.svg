@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd27a"/>
+      <stop offset="1" stop-color="#f5a524"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#16181d"/>
+  <!-- speed lines in the finger colours: pinky, ring, middle, index -->
+  <g stroke-linecap="round" stroke-width="4.5">
+    <line x1="9" y1="19" x2="17" y2="19" stroke="#e06c75"/>
+    <line x1="5" y1="28" x2="16" y2="28" stroke="#e5c07b"/>
+    <line x1="4" y1="37" x2="16" y2="37" stroke="#98c379"/>
+    <line x1="8" y1="46" x2="17" y2="46" stroke="#61afef"/>
+  </g>
+  <!-- keycap -->
+  <g transform="rotate(-12 39 32)">
+    <rect x="19" y="12" width="40" height="42" rx="9" fill="#a8640f"/>
+    <rect x="19" y="9" width="40" height="38" rx="9" fill="url(#cap)"/>
+    <g fill="none" stroke="#1b1b1b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M36 16 V33 q0 6 6 6 h3"/>
+      <path d="M29 23 H46"/>
+    </g>
+  </g>
+</svg>
