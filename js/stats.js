@@ -14,9 +14,36 @@
   function fresh() {
     return { chars: {}, sessions: [], unlocked: 0, mode: { type: 'lesson', idx: 0 }, emulate: layout.emulate };
   }
+  // Stored data is untrusted (all github.io pages of a user share one origin),
+  // so only keep known fields with the expected types.
+  const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
+  const obj = (v) => (v && typeof v === 'object' ? v : {});
+  function sanitize(d) {
+    d = obj(d);
+    const clean = fresh();
+    for (const [ch, c] of Object.entries(obj(d.chars))) {
+      if ([...ch].length !== 1) continue;
+      const x = obj(c);
+      clean.chars[ch] = { n: num(x.n), e: num(x.e), s: num(x.s), t: num(x.t) };
+    }
+    if (Array.isArray(d.sessions)) {
+      clean.sessions = d.sessions.map(obj).map((s) => ({
+        t: num(s.t), mode: typeof s.mode === 'string' ? s.mode : '',
+        wpm: num(s.wpm), acc: num(s.acc), chars: num(s.chars),
+      }));
+    }
+    clean.unlocked = Math.max(0, Math.floor(num(d.unlocked)));
+    const m = obj(d.mode);
+    if (m.type === 'free' && typeof m.id === 'string') clean.mode = { type: 'free', id: m.id };
+    else if (m.type === 'weak') clean.mode = { type: 'weak' };
+    else clean.mode = { type: 'lesson', idx: Math.max(0, Math.floor(num(m.idx))) };
+    if (typeof d.emulate === 'boolean') clean.emulate = d.emulate;
+    return clean;
+  }
+
   let data;
   try {
-    data = Object.assign(fresh(), JSON.parse(localStorage.getItem(KEY)));
+    data = sanitize(JSON.parse(localStorage.getItem(KEY)));
   } catch (e) {
     data = fresh();
   }
