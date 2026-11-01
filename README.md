@@ -1,4 +1,4 @@
-# typbrr
+# typebrr
 
 Typing trainer for the Eyelash Corne keymap, for the STD, Colemak and QWERTY layouts
 (`~/tmp/eyelash-corne/zmk-new_corne-std/config/eyelash_corne.keymap`).

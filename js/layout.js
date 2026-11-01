@@ -103,7 +103,15 @@
       emulate: false,
     },
   };
-  const LAYOUT_KEY = 'typbrr.layout';
+  // The app used to be called typbrr; move saved progress over to the new keys once.
+  for (const old of Object.keys(localStorage)) {
+    if (!old.startsWith('typbrr.')) continue;
+    const key = 'typebrr.' + old.slice('typbrr.'.length);
+    if (localStorage.getItem(key) === null) localStorage.setItem(key, localStorage.getItem(old));
+    localStorage.removeItem(old);
+  }
+
+  const LAYOUT_KEY = 'typebrr.layout';
   let layoutId = localStorage.getItem(LAYOUT_KEY);
   if (!LAYOUTS[layoutId]) layoutId = 'std';
   const CURRENT = Object.assign({ id: layoutId }, LAYOUTS[layoutId]);

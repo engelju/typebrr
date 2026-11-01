@@ -322,7 +322,7 @@
   const select = $('layout');
   for (const [id, l] of Object.entries(L.LAYOUTS)) select.add(new Option(l.name, id, false, id === L.CURRENT.id));
   select.addEventListener('change', () => L.selectLayout(select.value));
-  document.title = `typbrr – ${L.CURRENT.name} trainer for the Eyelash Corne`;
+  document.title = `typebrr – ${L.CURRENT.name} trainer for the Eyelash Corne`;
   $('howto').innerHTML = L.CURRENT.howto;
   const k = (pos) => `<b>${S.esc(L.keyName(pos))}</b>`;
   $('shift-tip').innerHTML = `Shift is a home row mod on ${k(14)} (left) and ${k(26)} (right). ` +
@@ -340,7 +340,7 @@
   });
 
   document.addEventListener('keydown', onKey);
-  window.addEventListener('typbrr:reset', () => setMode({ type: 'lesson', idx: 0 }));
+  window.addEventListener('typebrr:reset', () => setMode({ type: 'lesson', idx: 0 }));
 
   renderNav();
   renderLessonBar();

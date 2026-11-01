@@ -7,7 +7,7 @@
 
   // One store per layout; STD keeps the original key so existing progress stays.
   const layout = global.Layout.CURRENT;
-  const KEY = layout.id === 'std' ? 'typbrr.v1' : `typbrr.v1.${layout.id}`;
+  const KEY = layout.id === 'std' ? 'typebrr.v1' : `typebrr.v1.${layout.id}`;
   const ERR_ALPHA = 0.08;
   const SPEED_ALPHA = 0.12;
 
@@ -186,7 +186,7 @@
     data = Object.assign(fresh(), keep);
     save();
     render();
-    global.dispatchEvent(new Event('typbrr:reset'));
+    global.dispatchEvent(new Event('typebrr:reset'));
   });
 
   global.Stats = {
