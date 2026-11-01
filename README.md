@@ -3,6 +3,8 @@
 Typing trainer for the Eyelash Corne keymap, for the STD, Colemak and QWERTY layouts
 (`~/tmp/eyelash-corne/zmk-new_corne-std/config/eyelash_corne.keymap`).
 
+![typebrr's first lesson on the STD layout](docs/screenshot.png)
+
 Open `index.html` in a browser. No build step or server needed. Pick the layout in the dropdown next to the title. Progress is stored in localStorage, separately for each layout.
 
 - `js/layout.js`: keymap data (letter layouts with their lesson order, Lower/Raise/Adjust, combos, fingers) and the SVG keyboard
